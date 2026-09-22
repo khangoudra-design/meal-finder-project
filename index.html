@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <a href="" class="logo"><img src="menuimage.png">MEAL FINDER</a>
+        <button class="menu-btn" id="menubtn">☰</button>
+    </header>
+    <div class="sidebar" id="sidebar">
+
+        <button class="close-btn" id="closebtn">
+            ×
+        </button>
+        <h2>MEAL FINDER</h2>
+        <a href="index.html">Home</a>
+        <a href="#">Categories</a>
+        <a href="#">Search</a>
+        <a href="#">Favorites</a>
+
+    </div>
+
+    <!--HERO SECTION  -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="search-box">
+                <input type="text" placeholder="Search meals...">
+
+                <button class="search-btn">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+
+            <h1>What are your favorite cuisines?</h1>
+
+            <p>
+                PERSONALIZE YOUR EXPERIENCE
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- main page cards section -->
+
+    <section class="categories">
+
+        <h2>Categories</h2>
+
+        <div class="category-container" id="categoryContainer">
+        </div>
+
+    </section>
+
+    <!-- <section class="meals-section">
+
+    <h2>Popular Meals</h2>
+
+    <div id="mealContainer" class="meal-container"></div>
+
+</section> -->
+    <script src="script.js"></script>
+</body>
+
+</html>
