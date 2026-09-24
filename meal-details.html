@@ -2,47 +2,58 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meal Finder</title>
+
+    <title>Meal Details</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <!--  HEADER  -->
+    <!-- HEADER -->
 
     <header>
 
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
+
             <img src="menuimage.png" alt="Meal Finder">
+
             MEAL FINDER
+
         </a>
 
         <button class="menu-btn" id="menubtn">
+
             ☰
+
         </button>
 
     </header>
 
 
-    <!--  SIDEBAR  -->
+    <!-- SIDEBAR -->
 
     <div class="sidebar" id="sidebar">
 
-        <!-- Close button -->
         <button class="close-btn" id="closebtn">
+
             ×
+
         </button>
 
-        <!-- Categories will come from API link -->
         <div id="menuCategories"></div>
 
     </div>
 
 
-    <!--  HERO SECTION  -->
+    <!-- BANNER -->
 
     <section class="hero">
 
@@ -53,7 +64,9 @@
                 <input type="text" id="searchInput" placeholder="Search meals...">
 
                 <button class="search-btn" id="searchBtn">
+
                     <i class="bi bi-search"></i>
+
                 </button>
 
             </div>
@@ -70,19 +83,51 @@
 
     </section>
 
+    <div class="breadcrumb">
 
-    <!--  CATEGORIES  -->
+        <i class="bi bi-house-fill"></i>
 
-    <section class="categories">
+        <span>»</span>
 
-        <h2 class="section-title">CATEGORIES</h2>
+        <span id="breadcrumbMeal">
+            MEAL
+        </span>
 
-        <div class="category-container" id="categoryContainer">
+    </div>
+
+
+    <!-- DETAILS -->
+
+    <section class="details-section">
+
+        <h2 class="section-title">
+            MEAL DETAILS
+        </h2>
+
+
+        <div class="meal-details" id="mealDetails">
+
         </div>
 
     </section>
 
-    <script src="script.js"></script>
+
+    <!-- CATEGORIES -->
+
+    <section class="categories">
+
+        <h2 class="section-title">
+            CATEGORIES
+        </h2>
+
+        <div class="category-container" id="categoryContainer">
+
+        </div>
+
+    </section>
+
+
+    <script src="details.js"></script>
 
 </body>
 

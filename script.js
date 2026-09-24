@@ -1,6 +1,4 @@
-/* =========================
-   GET ELEMENTS
-========================= */
+/* GET ELEMENTS */
 
 let categoryContainer =
     document.getElementById("categoryContainer");
@@ -21,9 +19,7 @@ let search =
     document.getElementById("searchInput");
 
 
-/* =========================
-   OPEN HAMBURGER
-========================= */
+/* OPEN HAMBURGER */
 
 menuBtn.addEventListener("click", function () {
 
@@ -32,9 +28,7 @@ menuBtn.addEventListener("click", function () {
 });
 
 
-/* =========================
-   CLOSE HAMBURGER
-========================= */
+/* CLOSE HAMBURGER */
 
 closeBtn.addEventListener("click", function () {
 
@@ -43,9 +37,7 @@ closeBtn.addEventListener("click", function () {
 });
 
 
-/* =========================
-   GET CATEGORIES FROM API
-========================= */
+/* GET CATEGORIES FROM API */
 
 fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
 
@@ -111,9 +103,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     });
 
 
-/* =========================
-   MAIN CATEGORY CLICK
-========================= */
+/* MAIN CATEGORY CLICK */
 
 categoryContainer.addEventListener("click", function (event) {
 
@@ -133,9 +123,7 @@ categoryContainer.addEventListener("click", function (event) {
 });
 
 
-/* =========================
-   SIDEBAR CATEGORY CLICK
-========================= */
+/* SIDEBAR CATEGORY CLICK */
 
 menuCategories.addEventListener("click", function (event) {
 
@@ -154,9 +142,7 @@ menuCategories.addEventListener("click", function (event) {
 });
 
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
 search.addEventListener("input", function () {
 
