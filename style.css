@@ -429,9 +429,9 @@ header {
 }
 
 
-/* =========================
+/* 
    TAG
-========================= */
+ */
 
 .tag {
     border: 1px solid #ed5b1b;
@@ -444,9 +444,9 @@ header {
 }
 
 
-/* =========================
+/* 
    INGREDIENTS
-========================= */
+ */
 
 .ingredients {
     background-color: #ed5b1b;
@@ -481,9 +481,9 @@ header {
 }
 
 
-/* =========================
+/* 
    MEASURES
-========================= */
+ */
 
 .measures {
     margin-top: 40px;
@@ -516,9 +516,9 @@ header {
 }
 
 
-/* =========================
+/* 
    INSTRUCTIONS
-========================= */
+ */
 
 .instructions {
     margin-top: 25px;
@@ -531,9 +531,9 @@ header {
 }
 
 
-/* =========================
+/* 
    CATEGORY SECTION
-========================= */
+ */
 
 .categories {
     margin-top: 80px;
