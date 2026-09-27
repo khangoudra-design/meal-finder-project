@@ -1,5 +1,3 @@
-/* GET ELEMENTS */
-
 let mealContainer =
     document.getElementById("mealContainer");
 
@@ -18,8 +16,16 @@ let sidebar =
 let menuCategories =
     document.getElementById("menuCategories");
 
+let categoryDescription =
+    document.getElementById("categoryDescription");
 
-/* GET URL DATA */
+let searchInput =
+    document.getElementById("searchInput");
+
+let searchBtn =
+    document.getElementById("searchBtn");
+
+// get the details using url:
 
 let urlParams =
     new URLSearchParams(window.location.search);
@@ -30,85 +36,133 @@ let categoryName =
 let searchValue =
     urlParams.get("search");
 
+// using asynch and await to get the card details using fetch :
 
-/* CATEGORY OR SEARCH */
+/* GET CATEGORIES */
 
-if (categoryName) {
+async function getCategories() {
 
-    /* CATEGORY */
+    try {
 
-    mealTitle.textContent =
-        categoryName + " Meals";
+        let response = await fetch(
+            "https://www.themealdb.com/api/json/v1/1/categories.php"
+        );
+
+        let data = await response.json();
 
 
-    fetch(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`
-    )
+        data.categories.forEach(function (category) {
 
-        .then((response) => {
+            /* SIDEBAR */
 
-            return response.json();
+            menuCategories.innerHTML += `
+                <div
+                    class="menu-category"
+                    data-category="${category.strCategory}"
+                >
+                    ${category.strCategory}
+                </div>
+            `;
 
-        })
 
-        .then((data) => {
+            /* DESCRIPTION */
 
-            console.log(data);
+            if (
+                categoryName &&
+                category.strCategory.toLowerCase() ===
+                categoryName.toLowerCase()
+            ) {
 
-            displayMeals(data.meals);
+                categoryDescription.innerHTML = `
+                    <h3>${category.strCategory}</h3>
 
-        })
+                    <p>
+                        ${category.strCategoryDescription}
+                    </p>
+                `;
 
-        .catch((error) => {
-
-            console.log(error);
+            }
 
         });
+
+    }
+    catch (error) {
+
+        console.log(error);
+
+    }
 
 }
 
 
-else if (searchValue) {
+/* GET MEALS */
 
-    /* SEARCH */
+async function getMeals() {
 
-    mealTitle.textContent =
-        "Search Results";
+    try {
+
+        let url = "";
+
+        /* CATEGORY */
+
+        if (categoryName) {
+
+            mealTitle.textContent =
+                categoryName + " Meals";
+
+            url =
+                `https://www.themealdb.com/api/json/v1/1/filter.php?c=${encodeURIComponent(categoryName)}`;
+
+        }
+
+        /* SEARCH */
+
+        else if (searchValue) {
+
+            mealTitle.textContent =
+                "Search Results";
+
+            url =
+                `https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(searchValue)}`;
+
+        }
+
+        else {
+
+            mealTitle.textContent = "Meals";
+
+            return;
+
+        }
 
 
-    fetch(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`
-    )
+        /* FETCH API */
 
-        .then((response) => {
+        let response = await fetch(url);
 
-            return response.json();
+        let data = await response.json();
 
-        })
 
-        .then((data) => {
+        /* DISPLAY */
 
-            console.log(data);
+        if (data.meals) {
 
-            if (data.meals) {
+            displayMeals(data.meals);
 
-                displayMeals(data.meals);
+        }
+        else {
 
-            }
-            else {
+            mealContainer.innerHTML =
+                "<h2>No meals found</h2>";
 
-                mealContainer.innerHTML =
-                    "<h2>No meals found</h2>";
+        }
 
-            }
+    }
+    catch (error) {
 
-        })
+        console.log(error);
 
-        .catch((error) => {
-
-            console.log(error);
-
-        });
+    }
 
 }
 
@@ -123,26 +177,47 @@ function displayMeals(meals) {
 
         mealContainer.innerHTML += `
 
-<div 
-    class="meal-card"
-    data-id="${ meal.idMeal}"
->
-    <img
-        src="${meal.strMealThumb}"
-        alt="${meal.strMeal}"
-    >
+            <div
+                class="meal-card"
+                data-id="${meal.idMeal}"
+            >
 
-    <h3>
-        ${meal.strMeal}
-    </h3>
+                <img
+                    src="${meal.strMealThumb}"
+                    alt="${meal.strMeal}"
+                >
 
-</div>
+                <h3>
+                    ${meal.strMeal}
+                </h3>
+
+            </div>
 
         `;
 
     });
 
 }
+
+
+/* SEARCH BUTTON */
+
+searchBtn.addEventListener("click", function () {
+
+    let value =
+        searchInput.value.trim();
+
+    if (value !== "") {
+
+        window.location.href =
+            `meals.html?search=${encodeURIComponent(value)}`;
+
+    }
+
+});
+
+
+/* MEAL CARD CLICK */
 
 mealContainer.addEventListener("click", function (event) {
 
@@ -161,7 +236,8 @@ mealContainer.addEventListener("click", function (event) {
 
 });
 
-/* OPEN HAMBURGER */
+
+/* OPEN MENU */
 
 menuBtn.addEventListener("click", function () {
 
@@ -170,53 +246,13 @@ menuBtn.addEventListener("click", function () {
 });
 
 
-/* CLOSE HAMBURGER */
+/* CLOSE MENU */
 
 closeBtn.addEventListener("click", function () {
 
     sidebar.classList.remove("active");
 
 });
-
-
-/* GET CATEGORIES */
-
-fetch(
-    "https://www.themealdb.com/api/json/v1/1/categories.php"
-)
-
-    .then((response) => {
-
-        return response.json();
-
-    })
-
-    .then((data) => {
-
-        data.categories.forEach(function (category) {
-
-            menuCategories.innerHTML += `
-
-                <div
-                    class="menu-category"
-                    data-category="${category.strCategory}"
-                >
-
-                    ${category.strCategory}
-
-                </div>
-
-            `;
-
-        });
-
-    })
-
-    .catch((error) => {
-
-        console.log(error);
-
-    });
 
 
 /* SIDEBAR CATEGORY CLICK */
@@ -227,12 +263,19 @@ menuCategories.addEventListener("click", function (event) {
         event.target.classList.contains("menu-category")
     ) {
 
-        let selectedCategory =
+        let category =
             event.target.dataset.category;
 
         window.location.href =
-            `meals.html?category=${selectedCategory}`;
+            `meals.html?category=${encodeURIComponent(category)}`;
 
     }
 
 });
+
+
+/* CALL FUNCTIONS */
+
+getCategories();
+
+getMeals();

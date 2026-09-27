@@ -18,8 +18,8 @@ let menuCategories =
 let searchInput =
     document.getElementById("searchInput");
 
-let searchbtn = document.getElementById("searchBtn")
-
+let searchBtn =
+    document.getElementById("searchBtn");
 
 /* OPEN HAMBURGER */
 
@@ -41,20 +41,22 @@ closeBtn.addEventListener("click", function () {
 
 /* GET CATEGORIES FROM API */
 
-fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
+async function getCategories() {
 
-    .then((response) => {
+    try {
 
-        return response.json();
+        let response =
+            await fetch(
+                "https://www.themealdb.com/api/json/v1/1/categories.php"
+            );
 
-    })
-
-    .then((data) => {
+        let data =
+            await response.json();
 
         console.log(data);
 
-        data.categories.forEach((category) => {
 
+        data.categories.forEach(function (category) {
 
             /* MAIN CATEGORY CARD */
 
@@ -73,6 +75,10 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
                     <span class="category-name">
                         ${category.strCategory}
                     </span>
+
+                    <p class="category-description">
+                        ${category.strCategoryDescription}
+                    </p>
 
                 </div>
 
@@ -96,13 +102,16 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
 
         });
 
-    })
+    }
 
-    .catch((error) => {
+    catch (error) {
 
         console.log(error);
 
-    });
+    }
+}
+
+getCategories();
 
 
 /* MAIN CATEGORY CLICK */
@@ -118,7 +127,8 @@ categoryContainer.addEventListener("click", function (event) {
             card.dataset.category;
 
         window.location.href =
-            `meals.html?category=${categoryName}`;
+            `meals.html?category=${encodeURIComponent(categoryName)}`;
+
 
     }
 
@@ -137,7 +147,8 @@ menuCategories.addEventListener("click", function (event) {
             event.target.dataset.category;
 
         window.location.href =
-            `meals.html?category=${categoryName}`;
+            `meals.html?category=${encodeURIComponent(categoryName)}`;
+
 
     }
 
@@ -146,15 +157,15 @@ menuCategories.addEventListener("click", function (event) {
 
 /* SEARCH */
 
-searchbtn.addEventListener("input", function () {
+searchBtn.addEventListener("click", function () {
 
     let searchValue =
-        searchInput.value.toLowerCase();
+        searchInput.value.trim();
 
     if (searchValue !== "") {
 
         window.location.href =
-            `meals.html?search=${searchValue}`;
+            `meals.html?search=${encodeURIComponent(searchValue)}`;
 
     }
 

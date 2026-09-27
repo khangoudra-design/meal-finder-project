@@ -5,7 +5,7 @@
 }
 
 
-/* LOGO AND HAMBURGER MENU */
+/* HEADER */
 
 header {
     background-color: rgb(230, 96, 39);
@@ -23,12 +23,17 @@ header {
     color: white;
     font-size: 25px;
     font-weight: bold;
+    gap: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 .logo img {
-    width: 80px;
-    height: 60px;
+    width: 50px;
+    height: 28px;
     object-fit: contain;
+    display: block;
+    position: relative;
+    bottom: 3px;
 }
 
 .menu-btn {
@@ -56,15 +61,9 @@ header {
     overflow-y: auto;
 }
 
-
-/* OPEN SIDEBAR */
-
 .sidebar.active {
     right: 0;
 }
-
-
-/* CLOSE BUTTON */
 
 .close-btn {
     position: absolute;
@@ -78,40 +77,22 @@ header {
 }
 
 
-/* SIDEBAR CATEGORY */
+/* SIDEBAR CATEGORIES */
 
 .menu-category {
     display: block;
-    padding: 7px 10px;
-    border-bottom: 1px solid #eeeeee;
+    padding: 13px 10px;
+    border-bottom: 1px solid #eee;
     color: #555;
-    font-size: 13px;
+    font-size: 15px;
     cursor: pointer;
     transition: 0.2s;
+    font-family: 'Poppins', sans-serif;
 }
-
-
-/* HOVER */
 
 .menu-category:hover {
     background-color: #f7f7f7;
     color: #ed5b1b;
-}
-
-
-/* OLD SIDEBAR LINKS */
-
-.sidebar a {
-    display: block;
-    text-decoration: none;
-    color: black;
-    font-size: 18px;
-    padding: 15px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.sidebar a:hover {
-    color: rgb(230, 96, 39);
 }
 
 
@@ -121,46 +102,45 @@ header {
     height: 430px;
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)),
+            rgba(5, 4, 4, 0.5)),
         url("mainbackgroundimage.avif");
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-
 }
 
 .hero-content {
+    width: 100%;
     color: white;
-    width: 90%;
-
 }
 
 .hero-content h1 {
     font-size: 40px;
     margin-bottom: 20px;
-
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
 }
 
 .hero-content p {
     font-size: 16px;
-    letter-spacing: 2px;
+    letter-spacing: 0.05em;
     margin-bottom: 30px;
-
+    font-family: 'Poppins', sans-serif;
 }
 
 
-/* SEARCH BOX */
+/* SEARCH */
 
 .search-box {
     display: flex;
     width: 500px;
     margin: 20px auto;
-
 }
 
 .search-box input {
@@ -175,16 +155,17 @@ header {
     width: 50px;
     height: 50px;
     border: none;
-    background-color:  #ed5b1b;
-    color:white;
+    background-color: #ed5b1b;
+    color: white;
     cursor: pointer;
     font-size: 20px;
     position: relative;
     left: 10px;
-    border-radius: 100%;
+    border-radius: 50%;
 }
 
-/* CATEGORIES SECTION */
+
+/* CATEGORIES */
 
 .categories {
     padding: 20px;
@@ -192,7 +173,7 @@ header {
 }
 
 .section-title {
-    font-size: 14px;
+    font-size: 20px;
     font-weight: bold;
     letter-spacing: 2px;
     color: #222;
@@ -207,7 +188,7 @@ header {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 35px;
+    width: 50px;
     height: 2px;
     background-color: #ed5b1b;
 }
@@ -217,9 +198,7 @@ header {
 
 .category-container {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 14px;
 }
 
@@ -236,10 +215,8 @@ header {
     transition: 0.2s;
     width: 100%;
     cursor: pointer;
+    border-radius: 10px;
 }
-
-
-/* HOVER */
 
 .category-card:hover {
     transform: translateY(-3px);
@@ -253,43 +230,40 @@ header {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 10px;
 }
 
 
-/* ORANGE CATEGORY NAME */
+/* CATEGORY NAME */
 
 .category-name {
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: 6px;
+    right: 5px;
     background-color: #ed5b1b;
     color: white;
     font-size: 16px;
     font-weight: lighter;
     padding: 2px 20px;
-    border-radius: 3px;
+    border-radius: 5px;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-family: monospace;
 }
 
 
-/* MEALS SECTION */
+/* MEALS */
 
 .meals {
     padding: 30px 20px;
     background-color: #f5f5f5;
 }
 
-
 .meals h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 28px;
 }
-
-
-/* MEAL CONTAINER */
 
 .meal-container {
     display: grid;
@@ -302,18 +276,17 @@ header {
 
 .meal-card {
     background-color: white;
-    padding: 0px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
     transition: 0.2s;
     cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
 }
-
 
 .meal-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
-
 
 .meal-card img {
     width: 100%;
@@ -321,36 +294,46 @@ header {
     object-fit: cover;
 }
 
-
 .meal-card h3 {
     padding: 12px 8px;
     font-size: 18px;
     color: #333;
 }
 
-/* 
-   BREADCRUMB
- */
+
+/* CATEGORY DESCRIPTION */
+
+.category-description {
+    border: 1px solid rgb(230, 96, 39);
+    padding: 12px;
+    margin: 20px 0;
+}
+
+.category-description h3 {
+    color: rgb(230, 96, 39);
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.category-description p {
+    color: #777;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+
+/* MEAL DETAILS */
 
 .breadcrumb {
     margin: 50px 13px 25px;
     padding: 14px;
-
     background-color: #ed5b1b;
-
     color: white;
-
     font-size: 12px;
-
     display: flex;
     align-items: center;
     gap: 10px;
 }
-
-
-/* 
-   DETAILS SECTION
- */
 
 .details-section {
     padding: 0 13px;
@@ -360,67 +343,49 @@ header {
     margin-bottom: 30px;
 }
 
-
-/* 
-   MEAL DETAILS CARD
- */
-
 .meal-details {
     background-color: white;
-
     padding: 32px;
-
-    box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 
-/* 
-   TOP DETAILS
- */
+/* DETAILS TOP */
 
 .details-top {
     display: grid;
-
     grid-template-columns: 45% 55%;
-
     gap: 40px;
 }
 
 
-/* IMAGE */
+/* DETAILS IMAGE */
 
 .details-image img {
     width: 100%;
     height: 410px;
-
     object-fit: cover;
 }
 
 
-/* INFO */
+/* DETAILS INFO */
 
 .details-info h1 {
     font-size: 22px;
     color: #ed5b1b;
-
     margin-bottom: 10px;
 }
 
 .orange-line {
     width: 100%;
     height: 1px;
-
     background-color: #ed5b1b;
-
     margin-bottom: 20px;
 }
 
 .details-info p {
     margin-bottom: 20px;
-
     font-size: 13px;
-
     line-height: 1.6;
 }
 
@@ -429,32 +394,22 @@ header {
 }
 
 
-/* 
-   TAG
- */
+/* TAG */
 
 .tag {
     border: 1px solid #ed5b1b;
-
     padding: 4px 8px;
-
     color: #ed5b1b;
-
     font-size: 11px;
 }
 
 
-/* 
-   INGREDIENTS
- */
+/* INGREDIENTS */
 
 .ingredients {
     background-color: #ed5b1b;
-
     color: white;
-
     padding: 15px;
-
     margin-top: 30px;
 }
 
@@ -465,25 +420,18 @@ header {
 
 .ingredient-list {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-
     font-size: 12px;
 }
 
 .ingredient-list span::before {
     content: "●";
-
     margin-right: 5px;
 }
 
 
-/* 
-   MEASURES
- */
+/* MEASURES */
 
 .measures {
     margin-top: 40px;
@@ -492,22 +440,15 @@ header {
 .measures h3,
 .instructions h3 {
     font-size: 14px;
-
     margin-bottom: 12px;
 }
 
 .measure-list {
     border: 1px solid #ddd;
-
     padding: 15px;
-
     display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-
     font-size: 12px;
 }
 
@@ -516,9 +457,7 @@ header {
 }
 
 
-/* 
-   INSTRUCTIONS
- */
+/* INSTRUCTIONS */
 
 .instructions {
     margin-top: 25px;
@@ -526,15 +465,5 @@ header {
 
 .instructions p {
     font-size: 13px;
-
     line-height: 1.8;
-}
-
-
-/* 
-   CATEGORY SECTION
- */
-
-.categories {
-    margin-top: 80px;
 }
