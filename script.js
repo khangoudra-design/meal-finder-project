@@ -15,8 +15,10 @@ let sidebar =
 let menuCategories =
     document.getElementById("menuCategories");
 
-let search =
+let searchInput =
     document.getElementById("searchInput");
+
+let searchbtn = document.getElementById("searchBtn")
 
 
 /* OPEN HAMBURGER */
@@ -144,10 +146,10 @@ menuCategories.addEventListener("click", function (event) {
 
 /* SEARCH */
 
-search.addEventListener("input", function () {
+searchbtn.addEventListener("input", function () {
 
     let searchValue =
-        search.value.toLowerCase();
+        searchInput.value.toLowerCase();
 
     if (searchValue !== "") {
 

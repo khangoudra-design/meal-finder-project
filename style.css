@@ -328,9 +328,9 @@ header {
     color: #333;
 }
 
-/* =========================
+/* 
    BREADCRUMB
-========================= */
+ */
 
 .breadcrumb {
     margin: 50px 13px 25px;
@@ -348,9 +348,9 @@ header {
 }
 
 
-/* =========================
+/* 
    DETAILS SECTION
-========================= */
+ */
 
 .details-section {
     padding: 0 13px;
@@ -361,9 +361,9 @@ header {
 }
 
 
-/* =========================
+/* 
    MEAL DETAILS CARD
-========================= */
+ */
 
 .meal-details {
     background-color: white;
@@ -375,9 +375,9 @@ header {
 }
 
 
-/* =========================
+/* 
    TOP DETAILS
-========================= */
+ */
 
 .details-top {
     display: grid;
