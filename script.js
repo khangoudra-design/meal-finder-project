@@ -41,6 +41,7 @@ closeBtn.addEventListener("click", function () {
 
 /* GET CATEGORIES FROM API */
 
+
 async function getCategories() {
 
     try {
@@ -136,6 +137,7 @@ categoryContainer.addEventListener("click", function (event) {
 
 
 /* SIDEBAR CATEGORY CLICK */
+
 
 menuCategories.addEventListener("click", function (event) {
 
