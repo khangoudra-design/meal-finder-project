@@ -1,82 +1,157 @@
 /* GET ELEMENTS */
 
 let mealDetails = document.getElementById("mealDetails");
-
 let breadcrumbMeal = document.getElementById("breadcrumbMeal");
-
 let categoryContainer = document.getElementById("categoryContainer");
-
-let menuBtn = document.getElementById("menubtn");
-
-let closeBtn = document.getElementById("closebtn");
-
-let sidebar = document.getElementById("sidebar");
-
 let menuCategories = document.getElementById("menuCategories");
-
+let menuBtn = document.getElementById("menubtn");
+let closeBtn = document.getElementById("closebtn");
+let sidebar = document.getElementById("sidebar");
 let search = document.getElementById("searchInput");
-
 let searchBtn = document.getElementById("searchBtn");
 
 
 /* GET MEAL ID */
 
 let urlParams = new URLSearchParams(window.location.search);
-
 let mealId = urlParams.get("id");
 
 
 /* GET MEAL DETAILS */
 
 async function getMealDetails() {
+
     try {
-        let response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+
+        let response =
+            await fetch(
+                `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
+            );
 
         let data = await response.json();
+
         let meal = data.meals[0];
-        breadcrumbMeal.textContent = meal.strMeal.toUpperCase();
+
+        breadcrumbMeal.textContent =
+            meal.strMeal.toUpperCase();
+
         displayMeal(meal);
+
     }
+
     catch (error) {
+
         console.log(error);
 
     }
 }
+
 
 /* DISPLAY MEAL */
 
 function displayMeal(meal) {
 
     let ingredients = "";
-    letmeasures = "";
+    let measures = "";
 
-    /* GET INGREDIENTS */
+    let count = 1;
+
+
+    /* GET INGREDIENTS AND MEASURES */
 
     for (let i = 1; i <= 20; i++) {
 
-        let ingredient = meal["strIngredient" + i];
+        let ingredient =
+            meal["strIngredient" + i];
 
-        let measure = meal["strMeasure" + i];
+        let measure =
+            meal["strMeasure" + i];
 
-        if (ingredient && ingredient.trim() !== "") {
+
+        if (
+            ingredient &&
+            ingredient.trim() !== ""
+        ) {
+
+            /* INGREDIENT */
 
             ingredients += `
 
-                <span>${ingredient}</span>
-            `;
-            measures += `
-                <div>
-                    <i class=bi bi-pin-fill"></i>
-                    ${measures}
+                <div class="ingredient-item">
+
+                    <span class="ingredient-number">
+                        ${count}
+                    </span>
+
+                    <span>
+                        ${ingredient}
+                    </span>
+
                 </div>
+
             `;
+
+
+            /* MEASURE */
+
+            measures += `
+
+                <div class="measure-item">
+
+                    <i class="bi bi-pin-fill"></i>
+
+                    <span>
+                        ${measure || ""}
+                    </span>
+
+                </div>
+
+            `;
+
+            count++;
+
         }
 
     }
 
+
     /* TAGS */
 
-    let tags = meal.strTags || "No tags";
+    let tags =
+        meal.strTags || "No tags";
+
+
+    /* INSTRUCTIONS */
+
+    let instructions = "";
+
+    let instructionArray =
+        meal.strInstructions
+            .split(/(?<=[.!?])\s+/);
+
+
+    instructionArray.forEach(function (text) {
+
+        if (text.trim() !== "") {
+
+            instructions += `
+
+                <div class="instruction-item">
+
+                    <i class="bi bi-check-square"></i>
+
+                    <p>
+                        ${text.trim()}
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+    });
+
 
     /* DISPLAY */
 
@@ -85,70 +160,110 @@ function displayMeal(meal) {
         <div class="details-top">
 
             <div class="details-image">
+
                 <img
                     src="${meal.strMealThumb}"
                     alt="${meal.strMeal}"
                 >
+
             </div>
+
 
             <div class="details-info">
 
-                <h1>${meal.strMeal}</h1>
+                <h1>
+                    ${meal.strMeal}
+                </h1>
 
                 <div class="orange-line"></div>
 
                 <p>
+
                     <b>CATEGORY:</b>
+
                     ${meal.strCategory}
+
                 </p>
 
+
                 <p>
+
                     <b>Source:</b>
+
                     ${meal.strSource || "Not available"}
+
                 </p>
+
 
                 <p>
+
                     <b>Tags:</b>
-                    <span class="tag">${tags}</span>
+
+                    <span class="tag">
+                        ${tags}
+                    </span>
+
                 </p>
-
-                <div class="ingredients">
-
-                    <h3>Ingredients</h3>
-
-                    <div class="ingredient-list">
-                        ${ingredients}
-                    </div>
-
-                </div>
 
             </div>
 
         </div>
 
+
+        <!-- INGREDIENTS -->
+
+        <div class="ingredients">
+
+            <h3>
+                Ingredients
+            </h3>
+
+            <div class="ingredient-list">
+
+                ${ingredients}
+
+            </div>
+
+        </div>
+
+
+        <!-- MEASURE -->
 
         <div class="measures">
 
-            <h3>Measure:</h3>
+            <h3>
+                Measure:
+            </h3>
 
             <div class="measure-list">
+
                 ${measures}
+
             </div>
 
         </div>
 
 
+        <!-- INSTRUCTIONS -->
+
         <div class="instructions">
 
-            <h3>Instructions:</h3>
+            <h3>
+                Instructions:
+            </h3>
 
-            <p>
-                ${meal.strInstructions}
-            </p>
+            <div class="instruction-list">
+
+                ${instructions}
+
+            </div>
 
         </div>
+
     `;
+
 }
+
 
 /* GET CATEGORIES */
 
@@ -156,17 +271,21 @@ async function getCategories() {
 
     try {
 
-        let response = await fetch(
-            "https://www.themealdb.com/api/json/v1/1/categories.php"
-        );
+        let response =
+            await fetch(
+                "https://www.themealdb.com/api/json/v1/1/categories.php"
+            );
 
         let data = await response.json();
 
+
         data.categories.forEach(function (category) {
+
 
             /* CATEGORY CARD */
 
             categoryContainer.innerHTML += `
+
                 <div
                     class="category-card"
                     data-category="${category.strCategory}"
@@ -178,32 +297,41 @@ async function getCategories() {
                     >
 
                     <span class="category-name">
+
                         ${category.strCategory}
+
                     </span>
 
                 </div>
+
             `;
 
 
             /* SIDEBAR CATEGORY */
 
             menuCategories.innerHTML += `
+
                 <div
                     class="menu-category"
                     data-category="${category.strCategory}"
                 >
+
                     ${category.strCategory}
+
                 </div>
+
             `;
 
         });
 
     }
+
     catch (error) {
 
         console.log(error);
 
     }
+
 }
 
 
@@ -229,14 +357,18 @@ closeBtn.addEventListener("click", function () {
 
 categoryContainer.addEventListener("click", function (event) {
 
-    let card = event.target.closest(".category-card");
+    let card =
+        event.target.closest(".category-card");
+
 
     if (card) {
 
-        let category = card.dataset.category;
+        let category =
+            card.dataset.category;
 
         window.location.href =
             `meals.html?category=${encodeURIComponent(category)}`;
+
     }
 
 });
@@ -246,30 +378,41 @@ categoryContainer.addEventListener("click", function (event) {
 
 menuCategories.addEventListener("click", function (event) {
 
-    if (event.target.classList.contains("menu-category")) {
+    if (
+        event.target.classList.contains("menu-category")
+    ) {
 
-        let category = event.target.dataset.category;
+        let category =
+            event.target.dataset.category;
 
         window.location.href =
             `meals.html?category=${encodeURIComponent(category)}`;
+
     }
 
 });
+
 
 /* SEARCH */
 
 searchBtn.addEventListener("click", function () {
 
-    let searchValue = search.value.trim();
+    let searchValue =
+        search.value.trim();
+
 
     if (searchValue !== "") {
 
         window.location.href =
             `meals.html?search=${encodeURIComponent(searchValue)}`;
+
     }
 
 });
 
+
 /* CALL FUNCTIONS */
+
 getMealDetails();
+
 getCategories();
