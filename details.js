@@ -10,7 +10,6 @@ let sidebar = document.getElementById("sidebar");
 let search = document.getElementById("searchInput");
 let searchBtn = document.getElementById("searchBtn");
 
-
 /* GET MEAL ID */
 
 let urlParams = new URLSearchParams(window.location.search);
@@ -76,9 +75,10 @@ function displayMeal(meal) {
             /* INGREDIENT */
 
             ingredients += `
-
+            
                 <div class="ingredient-item">
 
+                    
                     <span class="ingredient-number">
                         ${count}
                     </span>
@@ -98,12 +98,12 @@ function displayMeal(meal) {
 
                 <div class="measure-item">
 
-                    <i class="bi bi-pin-fill"></i>
+                 <img src="spoon.jpeg" alt="spoon">
 
                     <span>
                         ${measure || ""}
                     </span>
-
+                    
                 </div>
 
             `;

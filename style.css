@@ -4,9 +4,6 @@
     padding: 0;
 }
 
-
-/* HEADER */
-
 header {
     background-color: rgb(230, 96, 39);
     height: 60px;
@@ -43,9 +40,6 @@ header {
     font-size: 30px;
     cursor: pointer;
 }
-
-
-/* SIDEBAR */
 
 .sidebar {
     position: fixed;
@@ -84,9 +78,6 @@ header {
     justify-content: center;
 }
 
-
-/* SIDEBAR CATEGORIES */
-
 .menu-category {
     display: block;
     padding: 13px 10px;
@@ -102,9 +93,6 @@ header {
     background-color: #f7f7f7;
     color: #ed5b1b;
 }
-
-
-/* HERO */
 
 .hero {
     height: 430px;
@@ -142,9 +130,6 @@ header {
     font-family: 'Poppins', sans-serif;
 }
 
-
-/* SEARCH */
-
 .search-box {
     display: flex;
     width: 500px;
@@ -172,9 +157,6 @@ header {
     border-radius: 50%;
 }
 
-
-/* CATEGORIES */
-
 .categories {
     padding: 20px;
     background-color: #f5f5f5;
@@ -201,17 +183,11 @@ header {
     background-color: #ed5b1b;
 }
 
-
-/* CATEGORY CONTAINER */
-
 .category-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
 }
-
-
-/* CATEGORY CARD */
 
 .category-card {
     position: relative;
@@ -231,18 +207,12 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
 
-
-/* CATEGORY IMAGE */
-
 .category-card img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     border-radius: 10px;
 }
-
-
-/* CATEGORY NAME */
 
 .category-name {
     position: absolute;
@@ -258,9 +228,6 @@ header {
     letter-spacing: 2px;
     font-family: monospace;
 }
-
-
-/* MEALS */
 
 .meals {
     padding: 30px 20px;
@@ -278,9 +245,6 @@ header {
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
 }
-
-
-/* MEAL CARD */
 
 .meal-card {
     background-color: white;
@@ -309,9 +273,6 @@ header {
     font-family: 'Poppins', sans-serif;
 }
 
-
-/* CATEGORY DESCRIPTION */
-
 .category-description {
     border: 1px solid rgb(230, 96, 39);
     padding: 12px;
@@ -330,18 +291,15 @@ header {
     line-height: 1.5;
 }
 
-
-/* MEAL DETAILS */
-
 .breadcrumb {
     margin: 50px 13px 25px;
     padding: 14px;
     background-color: #ed5b1b;
     color: white;
-    font-size: 12px;
+    font-size: 11px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .details-section {
@@ -356,216 +314,168 @@ header {
     background-color: white;
     padding: 32px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-}
-
-
-/* DETAILS TOP */
-
-.details-top {
     display: grid;
     grid-template-columns: 45% 55%;
-    gap: 40px;
+    column-gap: 40px;
 }
 
+.details-top {
+    display: contents;
+}
 
-/* DETAILS IMAGE */
+.details-image {
+    grid-column: 1;
+    grid-row: 1;
+}
 
 .details-image img {
     width: 100%;
-    height: 410px;
+    height: 350px;
     object-fit: cover;
+    display: block;
 }
 
-
-/* DETAILS INFO */
+.details-info {
+    grid-column: 2;
+    grid-row: 1;
+    padding-top: 0;
+}
 
 .details-info h1 {
-    font-size: 22px;
+    font-size: 17px;
     color: #ed5b1b;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
+    font-weight: 600;
 }
 
 .orange-line {
     width: 100%;
     height: 1px;
     background-color: #ed5b1b;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .details-info p {
-    margin-bottom: 20px;
-    font-size: 13px;
-    line-height: 1.6;
+    margin-bottom: 14px;
+    font-size: 11px;
+    line-height: 1.5;
 }
 
 .details-info b {
-    margin-right: 8px;
+    margin-right: 7px;
 }
-
-
-/* TAG */
 
 .tag {
     border: 1px solid #ed5b1b;
-    padding: 4px 8px;
+    padding: 3px 6px;
     color: #ed5b1b;
-    font-size: 11px;
+    font-size: 9px;
 }
 
-
-/* INGREDIENTS */
-
 .ingredients {
-    margin-top: 30px;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .ingredients h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
+    display: none;
 }
 
 .ingredient-list {
     background-color: #ed5b1b;
-
     padding: 12px 10px;
-
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
-    gap: 8px 20px;
+    gap: 8px 10px;
 }
 
 .ingredient-item {
     display: flex;
-
     align-items: center;
-
-    gap: 6px;
-
+    gap: 5px;
     color: white;
-
-    font-size: 12px;
+    font-size: 13px;
+    line-height: 1.2;
 }
 
 .ingredient-number {
-    width: 17px;
-    height: 17px;
-
-    min-width: 17px;
-
+    width: 13px;
+    height: 13px;
+    min-width: 13px;
     border-radius: 50%;
-
     background-color: #36a9b5;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     color: white;
-
-    font-size: 9px;
+    font-size: 7px;
 }
 
-
-/* MEASURES */
-
 .measures {
+    grid-column: 1 / -1;
     margin-top: 40px;
 }
 
-.measures h3,
-.instructions h3 {
-    font-size: 14px;
-    margin-bottom: 12px;
+.measures h3 {
+    font-size: 11px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .measure-list {
     border: 1px solid #ddd;
-    padding: 15px;
+    padding: 14px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    font-size: 12px;
+    gap: 10px 30px;
+    font-size: 14px;
 }
 
-.measure-list i {
-    color: #ed5b1b;
+.measure-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-
-/* INSTRUCTIONS */
+.measure-item img {
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
 
 .instructions {
-    margin-top: 20px;
+    grid-column: 1 / -1;
+    margin-top: 18px;
 }
 
 .instructions h3 {
-    font-size: 15px;
-
+    font-size: 11px;
     margin-bottom: 12px;
+    font-weight: 600;
 }
 
 .instruction-item {
     display: flex;
-
     align-items: flex-start;
-
     gap: 7px;
-
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 }
 
 .instruction-item i {
     color: #ed5b1b;
-
-    font-size: 11px;
-
-    margin-top: 3px;
-
-    min-width: 11px;
+    font-size: 10px;
+    margin-top: 2px;
+    min-width: 10px;
 }
 
 .instruction-item p {
     margin: 0;
-
-    font-size: 12px;
-
-    line-height: 1.5;
-
+    font-size: 15px;
+    line-height: 1.6;
     color: #333;
-}
-
-/* Media Query */
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 900px) {
-
-    /* CATEGORY CARDS */
-
-    .category-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* MEAL CARDS */
-
-    .meal-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* DETAILS */
-
-    .details-top {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .details-image img {
-        height: 350px;
-    }
-
+    font-family: 'Poppins', sans-serif;
 }

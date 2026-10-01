@@ -29,7 +29,7 @@ let searchValue = urlParams.get("search");
 
 async function getCategories() {
     try {
-        let response = await fetch( "https://www.themealdb.com/api/json/v1/1/categories.php");
+        let response = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
         let data = await response.json();
         data.categories.forEach(function (category) {
 
@@ -83,7 +83,7 @@ async function getMeals() {
         else if (searchValue) {
             mealTitle.textContent = "Search Results";
 
-         categoryDescription.innerHTML = `
+            categoryDescription.innerHTML = `
                 <h3>Search Results</h3>
                 <p>
                     Showing meals related to "${searchValue}".
@@ -108,7 +108,7 @@ async function getMeals() {
         }
         else {
             mealContainer.innerHTML = "<h2>No meals found</h2>";
-             categoryDescription.innerHTML = `
+            categoryDescription.innerHTML = `
                 <h3>No Results</h3>
                 <p> No meals were found for "${searchValue}".</p>
             `;
